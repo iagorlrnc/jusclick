@@ -92,8 +92,8 @@
 
 .tape-1 { top: -10px; right: 20px; transform: rotate(15deg); }
 .tape-2 { top: -10px; left: 20px; transform: rotate(-10deg); }
-.tape-3 { bottom: -10px; right: 20px; transform: rotate(-5deg); }
-.tape-4 { top: 20px; left: -15px; transform: rotate(-80deg); }
+.tape-3 { top: -10px; right: 20px; transform: rotate(-5deg); }
+.tape-4 { top: -10px; left: 20px; transform: rotate(8deg); }
 
 .doodle-star {
   position: absolute;

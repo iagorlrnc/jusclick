@@ -61,7 +61,8 @@
 }
 
 .res-number {
-  font-size: 3rem;
+  font-family: var(--font-display);
+  font-size: 3.5rem;
   line-height: 1;
 }
 

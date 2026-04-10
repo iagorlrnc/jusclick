@@ -17,9 +17,9 @@ export const Problem: React.FC = () => {
           </div>
           
           <div className="problem-connector">
-            <svg className="doodle doodle-connector" width="60" height="100" viewBox="0 0 60 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M30,0 Q60,50 30,100" stroke="var(--c-dark)" strokeWidth="4" strokeLinecap="round" strokeDasharray="8 8"/>
-              <path d="M20,85 L30,100 L45,90" stroke="var(--c-dark)" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+            <svg className="doodle doodle-connector" width="35" height="60" viewBox="0 0 60 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M30,0 Q60,50 30,100" stroke="var(--c-yellow)" strokeWidth="4" strokeLinecap="round" strokeDasharray="8 8"/>
+              <path d="M20,85 L30,100 L45,90" stroke="var(--c-yellow)" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </div>
 

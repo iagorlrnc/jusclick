@@ -6,14 +6,14 @@ const resources = [
     title: 'Central de Atendimento à Mulher',
     number: '180',
     desc: 'Ligue a qualquer hora, de qualquer lugar do Brasil. Atendimento gratuito, sigiloso e disponível 24 horas.',
-    type: 'Telefone',
+    type: 'Violência',
     color: 'res-pink',
   },
   {
     title: 'Disque 100 — Direitos Humanos',
     number: '100',
     desc: 'Canal para denúncias de violações de direitos humanos, incluindo violência contra a mulher.',
-    type: 'Telefone',
+    type: 'Denúncia',
     color: 'res-blue',
   },
   {
@@ -50,7 +50,7 @@ export const Contact: React.FC = () => {
             <article key={i} className={`res-card box-shadow-hard ${r.color}`} style={{ transform: `rotate(${i % 2 === 0 ? -1.5 : 1}deg)` }}>
               <div className="res-card-head">
                 <span className="res-type">{r.type}</span>
-                <span className="res-number text-hand">{r.number}</span>
+                <span className="res-number">{r.number}</span>
               </div>
               <h3 className="res-title">{r.title}</h3>
               <p className="res-desc">{r.desc}</p>

@@ -16,8 +16,8 @@ export const Law: React.FC = () => {
             <p>Previsto pela <strong className="highlight-text pink">Lei do Feminicídio</strong>, é considerado um crime hediondo.</p>
           </div>
           
-          <svg className="doodle connector-1" width="100" height="60" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-             <path d="M10,10 Q50,50 90,50 M80,40 L90,50 L80,60" className="icon-stroke"/>
+          <svg className="doodle connector-1" width="100" height="80" viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+             <path d="M90,10 Q70,20 20,70 M34,66 L20,70 L24,56" className="icon-stroke" stroke="var(--c-blue)"/>
           </svg>
 
           {/* Infographic block 2 */}
@@ -26,8 +26,8 @@ export const Law: React.FC = () => {
             <p>Raramente é um ato isolado. Geralmente é o <strong className="highlight-text yellow">desfecho trágico</strong> de violências anteriores.</p>
           </div>
 
-          <svg className="doodle connector-2" width="100" height="60" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-             <path d="M90,10 Q50,50 10,50 M20,40 L10,50 L20,60" className="icon-stroke"/>
+          <svg className="doodle connector-2" width="100" height="80" viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+             <path d="M90,10 Q70,20 20,70 M34,66 L20,70 L24,56" className="icon-stroke" stroke="var(--c-blue)"/>
           </svg>
 
           {/* Infographic block 3 */}
@@ -39,7 +39,7 @@ export const Law: React.FC = () => {
           <div className="hand-drawn-notes">
             <p className="text-hand note-1">A informação é a sua principal defesa!</p>
             <svg className="doodle note-arrow" width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-               <path d="M10,70 Q40,20 70,10 M50,10 L70,10 L70,30" className="icon-stroke" stroke="var(--c-pink)"/>
+               <path d="M70,70 Q40,20 10,10 M30,10 L10,10 L10,30" className="icon-stroke" stroke="var(--c-blue)"/>
             </svg>
           </div>
         </div>

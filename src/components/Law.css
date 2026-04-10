@@ -51,16 +51,18 @@
 
 .connector-1 {
   position: absolute;
-  top: 25%;
+  top: 29%;
   left: 40%;
-  z-index: 0;
+  z-index: 10;
+  transform: scaleX(-1) rotate(-12deg);
 }
 
 .connector-2 {
   position: absolute;
-  top: 55%;
+  top: 62%;
   right: 40%;
-  z-index: 0;
+  z-index: 10;
+  transform: rotate(-12deg);
 }
 
 .hand-drawn-notes {
@@ -73,7 +75,7 @@
 
 .note-1 {
   font-size: 2rem;
-  color: var(--c-pink);
+  color: var(--c-blue);
 }
 
 .note-arrow {
@@ -98,4 +100,8 @@
     text-align: center;
     margin-top: 2rem;
   }
+}
+
+.law-section .icon-stroke {
+  stroke: var(--c-pink);
 }
