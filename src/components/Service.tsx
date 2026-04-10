@@ -1,7 +1,7 @@
 import React from 'react';
-import './Contact.css';
+import './Service.css';
 
-export const Contact: React.FC = () => {
+export const Service: React.FC = () => {
   return (
     <section className="emergency-section" id="contato" aria-labelledby="contact-title">
       <div className="emergency-top">

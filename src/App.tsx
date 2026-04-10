@@ -5,18 +5,18 @@ import { Law } from './components/Law';
 import { HowItWorks } from './components/HowItWorks';
 import { Differentiator } from './components/Differentiator';
 import { CallToAction } from './components/CallToAction';
-import { Contact } from './components/Contact';
+import { Service } from './components/Service';
 
 export const App: React.FC = () => {
   return (
     <>
       <main>
         <Hero />
+        <Service />
         <Problem />
         <Law />
         <HowItWorks />
         <Differentiator />
-        <Contact />
         <CallToAction />
       </main>
       
