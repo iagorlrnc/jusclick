@@ -6,6 +6,7 @@ import { HowItWorks } from './components/HowItWorks';
 import { Differentiator } from './components/Differentiator';
 import { CallToAction } from './components/CallToAction';
 import { Service } from './components/Service';
+import { Contact } from './components/Contact';
 
 export const App: React.FC = () => {
   return (
@@ -17,6 +18,7 @@ export const App: React.FC = () => {
         <Law />
         <HowItWorks />
         <Differentiator />
+        <Contact />
         <CallToAction />
       </main>
       
