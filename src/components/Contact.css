@@ -1,5 +1,5 @@
 .resources-section {
-  padding: 6rem 2rem 3rem; /* top 6rem, left/right 2rem, bottom 3rem */
+  padding: 48px 2rem 3rem;
   background-color: var(--c-light);
   border-top: 6px solid var(--c-dark);
   border-bottom: 6px solid var(--c-dark);
