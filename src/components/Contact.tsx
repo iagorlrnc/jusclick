@@ -1,67 +1,38 @@
 import React from 'react';
 import './Contact.css';
 
-const resources = [
-  {
-    title: 'Central de Atendimento à Mulher',
-    number: '180',
-    desc: 'Ligue a qualquer hora, de qualquer lugar do Brasil. Atendimento gratuito, sigiloso e disponível 24 horas.',
-    type: 'Telefone',
-    color: 'res-pink',
-  },
-  {
-    title: 'Disque 100 — Direitos Humanos',
-    number: '100',
-    desc: 'Canal para denúncias de violações de direitos humanos, incluindo violência contra a mulher.',
-    type: 'Telefone',
-    color: 'res-blue',
-  },
-  {
-    title: 'Polícia Militar',
-    number: '190',
-    desc: 'Em situação de risco imediato, ligue imediatamente. Sirva-se do botão de pânico quando disponível.',
-    type: 'Emergência',
-    color: 'res-dark',
-  },
-  {
-    title: 'SAMU',
-    number: '192',
-    desc: 'Serviço de Atendimento Móvel de Urgência para casos de violência física que necessitem cuidado médico.',
-    type: 'Saúde',
-    color: 'res-yellow',
-  },
-];
-
 export const Contact: React.FC = () => {
   return (
-    <section className="section resources-section" id="contatos">
-      <div className="container">
-        <div className="resources-header">
-          <h2 className="display-subtitle">
-            <span className="cutout-text yellow">CONTATOS ESSENCIAIS</span>
-          </h2>
-          <p className="resources-subtitle">
-            Guarde estes números. Você pode precisar deles — ou alguém próximo a você pode.
-          </p>
-        </div>
-
-        <div className="resources-phones">
-          {resources.map((r, i) => (
-            <article key={i} className={`res-card box-shadow-hard ${r.color}`} style={{ transform: `rotate(${i % 2 === 0 ? -1.5 : 1}deg)` }}>
-              <div className="res-card-head">
-                <span className="res-type">{r.type}</span>
-                <span className="res-number text-hand">{r.number}</span>
-              </div>
-              <h3 className="res-title">{r.title}</h3>
-              <p className="res-desc">{r.desc}</p>
-              <a href={`tel:${r.number}`} className="res-call-btn box-shadow-hard-hover" aria-label={`Ligar para ${r.number}`}>
-                <svg viewBox="0 0 24 24" fill="none" width="18" height="18">
-                  <path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z" fill="currentColor"/>
-                </svg>
-                Ligar agora
+    <section className="emergency-section" id="contato" aria-labelledby="contact-title">
+      <div className="emergency-top">
+        <div className="container emergency-top-inner">
+          <div className="emergency-number-block">
+            <div className="emergency-pulse" aria-hidden="true" />
+            <div className="emergency-text">
+              <p className="emergency-eyebrow">Precisa de ajuda agora?</p>
+              <a href="tel:180" className="emergency-phone" aria-label="Ligar para Central de Atendimento à Mulher 180">180</a>
+              <p className="emergency-phone-label">Central de Atendimento à Mulher</p>
+              <p className="emergency-phone-note">Gratuito · Confidencial · 24 horas</p>
+            </div>
+          </div>
+          <div className="emergency-divider" aria-hidden="true" />
+          <div className="emergency-quick">
+            <p className="emergency-quick-title">Outras emergências</p>
+            <div className="quick-numbers">
+              <a href="tel:190" className="quick-num">
+                <span className="quick-num-n">190</span>
+                <span>Polícia</span>
               </a>
-            </article>
-          ))}
+              <a href="tel:192" className="quick-num">
+                <span className="quick-num-n">192</span>
+                <span>SAMU</span>
+              </a>
+              <a href="tel:100" className="quick-num">
+                <span className="quick-num-n">100</span>
+                <span>Dir. Humanos</span>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
