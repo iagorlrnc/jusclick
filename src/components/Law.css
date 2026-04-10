@@ -5,7 +5,7 @@
 
 .law-title {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 1.5rem;
 }
 
 .infographic-container {
@@ -19,23 +19,25 @@
 }
 
 .info-block {
-  padding: 2rem;
-  width: 80%;
-  font-size: clamp(1.1rem, 2vw, 1.4rem);
-  line-height: 1.5;
+  padding: 1rem 1.5rem;
+  width: fit-content;
+  max-width: 400px;
+  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+  line-height: 1.4;
   border-radius: 0;
   border: 4px solid var(--c-dark);
 }
 
 .info-number {
-  font-size: 3rem;
+  font-size: 2.2rem;
   color: var(--c-pink);
   display: block;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.2rem;
 }
 
 .info-1 {
   align-self: flex-start;
+  margin-left: 10%;
   transform: rotate(-1deg);
 }
 
@@ -52,9 +54,9 @@
 .connector-1 {
   position: absolute;
   top: 29%;
-  left: 40%;
+  left: 46%;
   z-index: 10;
-  transform: scaleX(-1) rotate(-12deg);
+  transform: scaleX(-1) rotate(5deg);
 }
 
 .connector-2 {
