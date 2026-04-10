@@ -12,9 +12,7 @@ export const CallToAction: React.FC = () => {
             </h2>
             <p className="cta-subtitle">O Jusclick pode salvar vidas.</p>
             
-            <button className="cta-button-large box-shadow-hard-hover">
-              Começar Agora
-            </button>
+
           </div>
           
           <div className="cta-visual">
