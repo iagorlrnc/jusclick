@@ -1,0 +1,169 @@
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 4rem 2rem;
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.pink-side {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  background-color: var(--c-pink);
+  /* Optional: we can add a specific pattern here later */
+}
+
+.yellow-side {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  background-color: var(--c-yellow);
+}
+
+@media (min-width: 900px) {
+  .pink-side {
+    width: 55%;
+    height: 100%;
+  }
+  .yellow-side {
+    top: 0;
+    right: 0;
+    left: auto;
+    width: 45%;
+    height: 100%;
+  }
+}
+
+.hero-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+  width: 100%;
+}
+
+@media (min-width: 900px) {
+  .hero-container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.hero-content {
+  flex: 1;
+  max-width: 600px;
+  position: relative;
+  text-align: left;
+}
+
+.hero-title {
+  margin-bottom: 2rem;
+  line-height: 1.1;
+  position: relative;
+  z-index: 2;
+}
+
+@media (min-width: 900px) {
+  .hero-title {
+    font-size: clamp(1.5rem, 3.5vw, 3rem);
+  }
+}
+
+.hero-subtitle {
+  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+  padding: 1.5rem;
+  margin-bottom: 2.5rem;
+  font-weight: 500;
+  z-index: 2;
+  position: relative;
+  transform: rotate(1deg);
+}
+
+.cta-button {
+  font-family: var(--font-display);
+  background-color: var(--c-blue);
+  color: var(--c-white);
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-visuals {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin-top: 4rem;
+}
+
+@media (min-width: 900px) {
+  .hero-visuals {
+    margin-top: 0;
+  }
+}
+
+.hero-image-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+
+.hero-image-bg {
+  position: absolute;
+  top: -10px;
+  left: -20px;
+  right: 20px;
+  bottom: 10px;
+  background-color: var(--c-dark);
+  z-index: 0;
+  transform: rotate(-3deg);
+}
+
+.hero-image {
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 1;
+  border: 4px solid var(--c-dark);
+  /* The generated image might be a square with solid background. Let's make it look like a polaroid or cutout */
+  background-color: var(--c-white);
+  padding: 10px;
+}
+
+.doodle {
+  position: absolute;
+  z-index: 3;
+}
+
+.doodle-arrow {
+  top: -60px;
+  left: -30px;
+  transform: rotate(-20deg);
+}
+
+.doodle-sparkle {
+  bottom: -20px;
+  right: -20px;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}

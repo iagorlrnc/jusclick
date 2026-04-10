@@ -1,0 +1,130 @@
+.differentiator-section {
+  background-color: var(--c-pink);
+  border-bottom: 6px solid var(--c-dark);
+  padding-bottom: 8rem;
+}
+
+.diff-title {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.diff-collage {
+  position: relative;
+  min-height: 600px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.diff-box {
+  position: absolute;
+  padding: 2rem;
+  width: 90%;
+  max-width: 350px;
+  background-color: var(--c-light);
+  border: 4px solid var(--c-dark);
+  z-index: 1;
+}
+
+/* Individual box positioning for collage effect */
+
+/* Top left */
+.db-1 {
+  top: 0;
+  left: 5%;
+  transform: rotate(-4deg);
+  background-color: var(--c-white);
+  color: var(--c-dark);
+}
+
+/* Top right */
+.db-2 {
+  top: 50px;
+  right: 5%;
+  transform: rotate(3deg);
+  background-color: var(--c-blue);
+  color: var(--c-white);
+  z-index: 2;
+}
+
+/* Bottom left */
+.db-3 {
+  top: 250px;
+  left: 10%;
+  transform: rotate(5deg);
+  background-color: var(--c-yellow);
+  color: var(--c-dark);
+  z-index: 3;
+}
+
+/* Bottom right */
+.db-4 {
+  bottom: 0;
+  right: 10%;
+  transform: rotate(-2deg);
+  background-color: var(--c-dark);
+  color: var(--c-white);
+  z-index: 4;
+}
+
+.diff-box:hover {
+  z-index: 10;
+}
+
+.diff-box-title {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.diff-tape {
+  position: absolute;
+  width: 60px;
+  height: 25px;
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  border: 1px solid rgba(0,0,0,0.1);
+  backdrop-filter: blur(2px);
+  z-index: 2;
+}
+
+.tape-1 { top: -10px; right: 20px; transform: rotate(15deg); }
+.tape-2 { top: -10px; left: 20px; transform: rotate(-10deg); }
+.tape-3 { bottom: -10px; right: 20px; transform: rotate(-5deg); }
+.tape-4 { top: 20px; left: -15px; transform: rotate(-80deg); }
+
+.doodle-star {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  z-index: 5;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .diff-collage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    min-height: auto;
+  }
+  
+  .diff-box {
+    position: relative;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: rotate(0) !important;
+    max-width: 100%;
+  }
+
+  /* Add back slight rotation for mobile */
+  .db-1 { transform: rotate(-1deg) !important; }
+  .db-2 { transform: rotate(1deg) !important; }
+  .db-3 { transform: rotate(-1deg) !important; }
+  .db-4 { transform: rotate(1deg) !important; }
+}

@@ -1,0 +1,123 @@
+.cta-section {
+  background-color: var(--c-yellow);
+  padding: 8rem 2rem;
+}
+
+.cta-content {
+  background-color: var(--c-blue);
+  border-radius: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+@media (min-width: 900px) {
+  .cta-content {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.cta-text {
+  padding: 4rem 2rem;
+  flex: 1;
+  color: var(--c-light);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  z-index: 2;
+}
+
+@media (min-width: 900px) {
+  .cta-text {
+    padding: 6rem 4rem;
+  }
+}
+
+.cta-title {
+  margin-bottom: 2rem;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+}
+
+.cta-title .cutout-text {
+  text-transform: none; /* Keep the phrase readable, but it's okay to just use original casing */
+}
+
+.cta-subtitle {
+  font-family: var(--font-hand);
+  font-size: clamp(2rem, 3vw, 3rem);
+  color: var(--c-yellow);
+  margin-bottom: 3rem;
+  transform: rotate(-2deg);
+}
+
+.cta-button-large {
+  font-family: var(--font-display);
+  background-color: var(--c-pink);
+  color: var(--c-white);
+  border: none;
+  padding: 1.5rem 3rem;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.cta-visual {
+  flex: 1;
+  position: relative;
+  min-height: 300px;
+  background-color: var(--c-yellow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 4px solid var(--c-dark);
+}
+
+@media (min-width: 900px) {
+  .cta-visual {
+    border-top: none;
+    border-left: 4px solid var(--c-dark);
+    min-height: 100%;
+  }
+}
+
+/* Background stripe pattern for visual interest */
+.cta-visual::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: repeating-linear-gradient(45deg, var(--c-yellow), var(--c-yellow) 20px, #FCE8B2 20px, #FCE8B2 40px);
+  z-index: 0;
+}
+
+.cta-image-wrapper {
+  position: relative;
+  z-index: 1;
+  width: 80%;
+  max-width: 400px;
+  transform: rotate(5deg);
+}
+
+.cta-image {
+  width: 100%;
+  height: auto;
+  border: 4px solid var(--c-dark);
+  background-color: var(--c-white);
+  padding: 10px;
+  box-shadow: 10px 10px 0 rgba(0,0,0,1);
+}
+
+.doodle-circle {
+  position: absolute;
+  top: -20px;
+  right: -30px;
+  z-index: 2;
+  animation: spin 10s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
