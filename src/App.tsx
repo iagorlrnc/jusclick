@@ -23,7 +23,7 @@ export const App: React.FC = () => {
       </main>
       
       <footer style={{ backgroundColor: 'var(--c-dark)', color: 'var(--c-light)', padding: '2rem', textAlign: 'center', fontFamily: 'var(--font-body)' }}>
-        <p>&copy; {new Date().getFullYear()} Jusclick. Uso consciente da tecnologia para proteção da mulher.</p>
+        <p>&copy; {new Date().getFullYear()} Jusclick<br/>Proteção da mulher</p>
       </footer>
     </>
   );
