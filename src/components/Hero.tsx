@@ -29,7 +29,7 @@ export const Hero: React.FC = () => {
         <div className="hero-visuals">
           {/* Hand drawn graphic elements */}
           <svg className="doodle doodle-arrow" width="80" height="80" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M10,90 Q50,90 90,10 M80,10 L90,10 L90,20" stroke="var(--c-dark)" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M10,50 Q50,20 90,50 M70,30 L90,50 L70,70" stroke="var(--c-dark)" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
           
           <div className="hero-image-wrapper">
