@@ -21,9 +21,7 @@ export const Hero: React.FC = () => {
             Uma plataforma digital que ajuda mulheres a identificar situações de risco, entender seus direitos e agir com segurança.
           </p>
           
-          <button className="cta-button box-shadow-hard-hover">
-            Proteger-me Agora
-          </button>
+
         </div>
 
         <div className="hero-visuals">
