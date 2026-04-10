@@ -32,7 +32,7 @@ export const Hero: React.FC = () => {
 
           <div className="hero-image-wrapper">
             <div className="hero-image-bg"></div>
-            <img src="/imagehero.png" alt="we can do it!" className="hero-image" />
+            <img src="/hero_typewriter.png" alt="Máquina de escrever retrô digital collage" className="hero-image" />
           </div>
 
           <svg className="doodle doodle-sparkle" width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">

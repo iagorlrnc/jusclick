@@ -18,7 +18,7 @@ export const CallToAction: React.FC = () => {
           <div className="cta-visual">
             {/* Adding the hero image or another visual element here */}
             <div className="cta-image-wrapper">
-              <img src="/hero_typewriter.png" alt="Máquina de escrever" className="cta-image" />
+              <img src="/imagehero.png" alt="We can do it!" className="cta-image" />
               <svg className="doodle doodle-circle" width="120" height="120" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M50,10 Q90,10 90,50 Q90,90 50,90 Q10,90 10,50 Q10,10 50,10 Z" className="icon-stroke" stroke="var(--c-yellow)" strokeDasharray="10 5"/>
               </svg>
