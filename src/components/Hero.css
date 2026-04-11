@@ -18,23 +18,35 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 60%;
+  height: 65%;
   background-color: var(--c-pink);
   /* Optional: we can add a specific pattern here later */
+}
+
+.purple-side {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--c-purple);
+  z-index: -2;
 }
 
 .yellow-side {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 40%;
+  height: 30%;
   background-color: var(--c-yellow);
 }
 
-@media (min-width: 900px) {
+@media (min-width: 1200px) {
   .pink-side {
     width: 55%;
     height: 100%;
+  }
+  .blue-side {
+    display: none;
   }
   .yellow-side {
     top: 0;
@@ -46,15 +58,14 @@
 }
 
 .hero-container {
-  position: relative;
+  /* removed position and z-index to allow visual to position to section */
   display: flex;
   flex-direction: column;
   align-items: center;
-  z-index: 1;
   width: 100%;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 1200px) {
   .hero-container {
     flex-direction: row;
     justify-content: space-between;
@@ -66,6 +77,7 @@
   max-width: 600px;
   position: relative;
   text-align: left;
+  z-index: 1;
 }
 
 .hero-title {
@@ -75,7 +87,7 @@
   z-index: 2;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 1200px) {
   .hero-title {
     font-size: clamp(1.5rem, 3.5vw, 3rem);
   }
@@ -109,11 +121,18 @@
   justify-content: center;
   position: relative;
   margin-top: 4rem;
+  z-index: 1;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 1200px) {
   .hero-visuals {
     margin-top: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 45%;
+    align-items: center;
   }
 }
 
@@ -151,9 +170,16 @@
 }
 
 .doodle-arrow {
-  top: -60px;
-  left: -30px;
-  transform: rotate(0deg);
+  display: none;
+}
+
+@media (min-width: 1200px) {
+  .doodle-arrow {
+    display: block;
+    top: 50%;
+    left: 0;
+    transform: translate(-50%, -50%);
+  }
 }
 
 .doodle-sparkle {

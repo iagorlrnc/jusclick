@@ -23,7 +23,7 @@ export const Law: React.FC = () => {
           {/* Infographic block 2 */}
           <div className="info-block info-2 paper-card">
             <span className="info-number text-hand">02.</span>
-            <p>Raramente é um ato isolado. Geralmente é o <strong className="highlight-text yellow">desfecho trágico</strong> de violências anteriores.</p>
+            <p>Raramente é um ato isolado. Geralmente é o <strong className="highlight-text pink">desfecho trágico</strong> de violências anteriores.</p>
           </div>
 
           <svg className="doodle connector-2" width="100" height="80" viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -33,7 +33,7 @@ export const Law: React.FC = () => {
           {/* Infographic block 3 */}
           <div className="info-block info-3 paper-card">
             <span className="info-number text-hand">03.</span>
-            <p>Proteja-se: muitas vítimas desconhecem os mecanismos da <strong className="highlight-text blue">Lei Maria da Penha</strong>.</p>
+            <p>Proteja-se: muitas vítimas desconhecem os mecanismos da <strong className="highlight-text pink">Lei Maria da Penha</strong>.</p>
           </div>
           
           <div className="hand-drawn-notes">

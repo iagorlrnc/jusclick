@@ -5,6 +5,7 @@ export const Hero: React.FC = () => {
   return (
     <section className="hero-section">
       <div className="hero-bg pink-side"></div>
+      <div className="hero-bg purple-side"></div>
       <div className="hero-bg yellow-side"></div>
 
       <div className="container hero-container">
@@ -33,11 +34,10 @@ export const Hero: React.FC = () => {
           <div className="hero-image-wrapper">
             <div className="hero-image-bg"></div>
             <img src="/hero_typewriter.png" alt="Máquina de escrever retrô digital collage" className="hero-image" />
+            <svg className="doodle doodle-sparkle" width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M50,10 L60,40 L90,50 L60,60 L50,90 L40,60 L10,50 L40,40 Z" fill="var(--c-yellow)" stroke="var(--c-dark)" strokeWidth="4" strokeLinejoin="round" />
+            </svg>
           </div>
-
-          <svg className="doodle doodle-sparkle" width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M50,10 L60,40 L90,50 L60,60 L50,90 L40,60 L10,50 L40,40 Z" fill="var(--c-yellow)" stroke="var(--c-dark)" strokeWidth="4" strokeLinejoin="round" />
-          </svg>
         </div>
       </div>
     </section>

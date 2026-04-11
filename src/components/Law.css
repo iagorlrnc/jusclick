@@ -1,6 +1,7 @@
 .law-section {
   background-color: var(--c-yellow);
   position: relative;
+  border-bottom: 6px solid var(--c-dark);
 }
 
 .law-title {

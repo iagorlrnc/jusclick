@@ -26,6 +26,7 @@
 .emergency-top-inner {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 48px;
   position: relative;
   z-index: 1;
@@ -106,7 +107,7 @@
 }
 
 .emergency-quick {
-  flex: 1;
+  /* removed flex: 1 to allow horizontal centering of everything */
 }
 
 .emergency-quick-title {
@@ -122,6 +123,7 @@
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .quick-num {
