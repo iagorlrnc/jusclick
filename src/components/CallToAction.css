@@ -50,7 +50,7 @@
   color: var(--c-yellow);
   transform: rotate(-2deg);
 }
-
+ 
 .cta-button-large {
   font-family: var(--font-display);
   background-color: var(--c-pink);
