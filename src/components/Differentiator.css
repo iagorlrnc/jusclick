@@ -103,12 +103,23 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+  .differentiator-section {
+    padding-bottom: 4rem;
+  }
+
+  .diff-title {
+    margin-bottom: 2.5rem;
+  }
+
   .diff-collage {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 2rem;
     min-height: auto;
+    width: 100%;
+    overflow-x: hidden;
+    padding: 1rem 0;
   }
   
   .diff-box {
@@ -117,11 +128,18 @@
     left: auto !important;
     right: auto !important;
     bottom: auto !important;
-    transform: rotate(0) !important;
-    max-width: 100%;
+    margin: 0 auto;
+    width: 90%;
+    max-width: 340px;
+    box-sizing: border-box;
+    padding: 1.5rem;
   }
 
-  /* Add back slight rotation for mobile */
+  .diff-box-title {
+    font-size: 1.5rem;
+  }
+
+  /* Subtle rotation to keep retro-pop style without breaking layout width */
   .db-1 { transform: rotate(-1deg) !important; }
   .db-2 { transform: rotate(1deg) !important; }
   .db-3 { transform: rotate(-1deg) !important; }

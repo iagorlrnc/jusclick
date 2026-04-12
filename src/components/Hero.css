@@ -193,3 +193,45 @@
   50% { transform: scale(1.1); }
   100% { transform: scale(1); }
 }
+
+/* Mobile responsive constraints */
+@media (max-width: 767px) {
+  .hero-section {
+    padding: 3rem 1rem 4rem;
+    min-height: auto;
+    overflow-x: hidden;
+  }
+  
+  .hero-title {
+    font-size: 2.2rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem;
+    transform: rotate(0);
+    padding: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .hero-visuals {
+    margin-top: 2rem;
+    width: 100%;
+  }
+
+  .hero-image-wrapper {
+    width: 85%;
+    margin: 0 auto;
+    max-width: 320px;
+  }
+
+  .hero-image-bg {
+    /* Reduce hard shadow extensions so they don't break horizontal screen limits */
+    left: -10px;
+    right: 10px;
+    bottom: -10px;
+    top: 5px;
+    transform: rotate(-2deg);
+  }
+}

@@ -7,29 +7,25 @@ export const HowItWorks: React.FC = () => {
       id: 1,
       title: "Descreva sua situação",
       text: "Conte o que está acontecendo em um ambiente seguro e confidencial.",
-      color: "pink",
-      rotation: "-2deg"
+      color: "pink"
     },
     {
       id: 2,
       title: "Identificação do risco",
       text: "Nosso sistema analisa os padrões para identificar o nível de perigo atual.",
-      color: "yellow",
-      rotation: "3deg"
+      color: "yellow"
     },
     {
       id: 3,
       title: "Orientações jurídicas",
       text: "Receba informações claras em linguagem simples, sem juridiquês, sobre seus direitos.",
-      color: "blue",
-      rotation: "-1deg"
+      color: "blue"
     },
     {
       id: 4,
       title: "Encaminhamento",
       text: "Conexão direta com a Defensoria Pública do Tocantins e instituições parceiras.",
-      color: "dark",
-      rotation: "2deg"
+      color: "dark"
     }
   ];
 
@@ -44,8 +40,7 @@ export const HowItWorks: React.FC = () => {
           {steps.map((step, index) => (
             <div 
               key={step.id} 
-              className={`step-card box-shadow-hard box-shadow-hard-hover ${step.color}-card`}
-              style={{ transform: `rotate(${step.rotation})` }}
+              className={`step-card box-shadow-hard box-shadow-hard-hover ${step.color}-card step-${step.id}`}
             >
               <div className="step-tape"></div>
               <div className="step-number text-hand">Etapa {step.id}</div>

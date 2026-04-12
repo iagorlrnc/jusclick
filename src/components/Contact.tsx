@@ -47,7 +47,7 @@ export const Contact: React.FC = () => {
 
         <div className="resources-phones">
           {resources.map((r, i) => (
-            <article key={i} className={`res-card box-shadow-hard ${r.color}`} style={{ transform: `rotate(${i % 2 === 0 ? -1.5 : 1}deg)` }}>
+            <article key={i} className={`res-card box-shadow-hard ${r.color} res-card-${i}`}>
               <div className="res-card-head">
                 <span className="res-type">{r.type}</span>
                 <span className="res-number">{r.number}</span>

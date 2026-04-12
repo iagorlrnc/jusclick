@@ -48,7 +48,6 @@
   font-family: var(--font-hand);
   font-size: clamp(2rem, 3vw, 3rem);
   color: var(--c-yellow);
-  margin-bottom: 3rem;
   transform: rotate(-2deg);
 }
 

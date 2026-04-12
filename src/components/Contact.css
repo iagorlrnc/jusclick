@@ -34,6 +34,10 @@
   background-color: var(--c-white);
 }
 
+/* Base Desktop Rotations */
+.res-card-0, .res-card-2 { transform: rotate(-1.5deg); }
+.res-card-1, .res-card-3 { transform: rotate(1deg); }
+
 .res-card:hover {
   transform: translate(-3px, -3px) rotate(0deg) !important;
   box-shadow: 10px 10px 0 var(--c-dark);
@@ -175,10 +179,32 @@
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 767px) {
+  .resources-section {
+    overflow-x: hidden;
+  }
+
   .resources-phones {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 2rem;
+    width: 100%;
+  }
+
+  .res-card {
+    margin: 0 auto;
+    width: 90%;
+    max-width: 340px;
+    box-sizing: border-box;
+    padding: 1.8rem;
+  }
+
+  /* Override desktop rotations on small screens */
+  .res-card-0, .res-card-1, .res-card-2, .res-card-3 { 
+    transform: rotate(0) !important; 
+  }
+
+  .res-card:hover {
+    transform: translate(-1px, -1px) rotate(0deg) !important;
   }
 
   .resources-links-grid {

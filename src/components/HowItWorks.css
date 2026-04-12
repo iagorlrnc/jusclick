@@ -30,6 +30,17 @@
   transition: transform 0.2s;
 }
 
+/* Base Desktop Rotations */
+.step-1 { transform: rotate(-2deg); }
+.step-2 { transform: rotate(3deg); }
+.step-3 { transform: rotate(-1deg); }
+.step-4 { transform: rotate(2deg); }
+
+.step-card:hover {
+  transform: rotate(0) scale(1.02);
+  z-index: 5;
+}
+
 .step-tape {
   position: absolute;
   top: -15px;
@@ -107,5 +118,42 @@
 @media (min-width: 768px) {
   .step-card:nth-child(odd) .step-arrow {
     display: block;
+  }
+}
+
+/* Mobile responsive constraints */
+@media (max-width: 767px) {
+  .how-it-works-section {
+    overflow-x: hidden;
+  }
+
+  .how-title {
+    margin-bottom: 3rem;
+  }
+
+  .steps-grid {
+    gap: 2rem;
+    padding: 1rem 0;
+  }
+
+  .step-card {
+    margin: 0 auto;
+    width: 90%;
+    max-width: 340px;
+    box-sizing: border-box;
+    padding: 1.8rem;
+  }
+
+  .step-number {
+    font-size: 2rem;
+  }
+
+  .step-title {
+    font-size: 1.3rem;
+  }
+
+  /* Provide strict centering constraints and zero out rotations */
+  .step-1, .step-2, .step-3, .step-4 {
+    transform: rotate(0) !important;
   }
 }
