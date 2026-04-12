@@ -75,8 +75,10 @@ export const AssessmentForm: React.FC = () => {
     setResultMessage(finalResultMessage);
 
     // Preparando os dados para o EmailJS
-    const identData = anonymous 
-      ? "Usuário Anônimo" 
+    const isTotallyEmpty = !name.trim() && !age.trim() && !cpf.trim() && !phone.trim() && !location.trim();
+    
+    const identData = (anonymous || isTotallyEmpty)
+      ? "Anônima" 
       : `Nome: ${name || 'Não informado'}\nIdade: ${age || 'Não informada'}\nCPF: ${cpf || 'Não informado'}\nTelefone: ${phone || 'Não informado'}\nLocal: ${location || 'Não informado'}`;
       
     const situacaoText = description || 'Nenhuma situação descrita na caixa de texto.';
@@ -169,7 +171,7 @@ export const AssessmentForm: React.FC = () => {
         const startY = window.scrollY;
         const distance = topOffset - startY;
         let startTime: number | null = null;
-        const duration = 1200; // 1.2 segundos exatos rolando a tela
+        const duration = 800; // 0.8 segundos exatos rolando a tela
 
         const animation = (currentTime: number) => {
           if (startTime === null) startTime = currentTime;
