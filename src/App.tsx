@@ -7,6 +7,7 @@ import { Differentiator } from './components/Differentiator';
 import { CallToAction } from './components/CallToAction';
 import { Service } from './components/Service';
 import { Contact } from './components/Contact';
+import { AssessmentForm } from './components/AssessmentForm';
 
 export const App: React.FC = () => {
   return (
@@ -19,6 +20,7 @@ export const App: React.FC = () => {
         <HowItWorks />
         <Differentiator />
         <Contact />
+        <AssessmentForm />
         <CallToAction />
       </main>
       
