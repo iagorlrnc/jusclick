@@ -10,7 +10,7 @@ export const CallToAction: React.FC = () => {
             <h2 className="display-title cta-title">
               <span className="cutout-text">Reconhecer o perigo é o primeiro passo.</span>
             </h2>
-            <p className="cta-subtitle">O Jusclick pode salvar vidas.</p>
+            <p className="cta-subtitle">O Jusclick pode<br/>salvar vidas.</p>
             
 
           </div>
