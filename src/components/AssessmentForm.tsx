@@ -8,6 +8,7 @@ export const AssessmentForm: React.FC = () => {
   const [cpf, setCpf] = useState('');
   const [phone, setPhone] = useState('');
 
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [description, setDescription] = useState('');
   const [threat, setThreat] = useState<string | null>(null);
   const [control, setControl] = useState<string | null>(null);
@@ -33,44 +34,73 @@ export const AssessmentForm: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitted(true);
+
+    let recommendationText = "";
+    let finalResultMessage: React.ReactNode | null = null;
 
     if (urgency === 'Sim') {
-      setResultMessage(
+      recommendationText = "ALERTA DE PERIGO IMEDIATO: Ligue imediatamente para a Polícia Militar (190). Se possível, procure um local seguro longe do agressor. Não hesite em pedir ajuda a vizinhos ou pessoas próximas.";
+      finalResultMessage = (
         <>
           <strong style={{ color: '#FF0000' }}>ALERTA DE PERIGO IMEDIATO:</strong> Ligue imediatamente para a Polícia Militar (190). Se possível, procure um local seguro longe do agressor. Não hesite em pedir ajuda a vizinhos ou pessoas próximas.
         </>
       );
-      return;
-    }
-
-    if (aggression === 'Sim') {
-      setResultMessage(
+    } else if (aggression === 'Sim') {
+      recommendationText = "SITUAÇÃO DE ALTO RISCO. Em caso de agressão, você pode registrar boletim de ocorrência em qualquer delegacia, preferencialmente na DEAM (Delegacia Especializada de Atendimento à Mulher). Ligue 180 para orientações e procure atendimento médico se necessário.";
+      finalResultMessage = (
         <>
           <strong style={{ color: '#E69500' }}>SITUAÇÃO DE ALTO RISCO.</strong> Em caso de agressão, você pode registrar boletim de ocorrência em qualquer delegacia, preferencialmente na DEAM (Delegacia Especializada de Atendimento à Mulher). Ligue 180 para orientações e procure atendimento médico se necessário.
         </>
       );
-      return;
-    }
-
-    if (threat === 'Sim' || fear === 'Sim') {
-      setResultMessage(
+    } else if (threat === 'Sim' || fear === 'Sim') {
+      recommendationText = "SUA SEGURANÇA ESTÁ AMEAÇADA. Ameaça e violência psicológica são crimes. Considere buscar medida protetiva de urgência. Ligue 180 para a Central de Atendimento à Mulher para receber orientações jurídicas e psicológicas gratuitas.";
+      finalResultMessage = (
         <>
           <strong style={{ color: '#E69500' }}>SUA SEGURANÇA ESTÁ AMEAÇADA.</strong> Ameaça e violência psicológica são crimes. Considere buscar medida protetiva de urgência. Ligue 180 para a Central de Atendimento à Mulher para receber orientações jurídicas e psicológicas gratuitas.
         </>
       );
-      return;
-    }
-
-    if (control === 'Sim' || prevented === 'Sim') {
-      setResultMessage(
+    } else if (control === 'Sim' || prevented === 'Sim') {
+      recommendationText = "Isso é violência psicológica e controle abusivo. Você tem o direito de ir e vir e tomar suas próprias decisões. Recomendamos buscar apoio psicológico e jurídico. O Ligue 180 pode te orientar e indicar centros de referência perto de você.";
+      finalResultMessage = (
         <>
           <strong style={{ color: '#E69500' }}>Isso é violência psicológica e controle abusivo.</strong> Você tem o direito de ir e vir e tomar suas próprias decisões. Recomendamos buscar apoio psicológico e jurídico. O Ligue 180 pode te orientar e indicar centros de referência perto de você.
         </>
       );
-      return;
+    } else {
+      recommendationText = "Agradecemos por compartilhar sua situação. Se você sente que algo não está certo no seu relacionamento, ligue 180 para conversar e receber orientação profissional sigilosa.";
+      finalResultMessage = recommendationText;
     }
 
-    setResultMessage("Agradecemos por compartilhar sua situação. Se você sente que algo não está certo no seu relacionamento, ligue 180 para conversar e receber orientação profissional sigilosa.");
+    setResultMessage(finalResultMessage);
+
+    // Preparando os dados para o EmailJS
+    const identData = anonymous 
+      ? "Usuário Anônimo" 
+      : `Nome: ${name || 'Não informado'}\nIdade: ${age || 'Não informada'}\nCPF: ${cpf || 'Não informado'}\nTelefone: ${phone || 'Não informado'}\nLocal: ${location || 'Não informado'}`;
+      
+    const situacaoText = description || 'Nenhuma situação descrita na caixa de texto.';
+
+    // Função de envio "fire-and-forget" transparente para o usuario
+    fetch('https://api.emailjs.com/api/v1.0/email/send', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        service_id: import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        template_id: import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        user_id: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+        template_params: {
+          identificacao: identData,
+          situacao: situacaoText,
+          recomendacao: recommendationText
+        }
+      })
+    }).then(res => {
+      if (!res.ok) console.error("EmailJS request fail", res.status);
+    }).catch(err => console.error("EmailJS error", err));
+
   };
 
   const handleCpfChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -115,6 +145,54 @@ export const AssessmentForm: React.FC = () => {
     setPhone(formatted);
   };
 
+  const handleClearForm = () => {
+    setIsSubmitted(false);
+    setAnonymous(false);
+    setName('');
+    setAge('');
+    setCpf('');
+    setPhone('');
+    setLocation('');
+    setDescription('');
+    setThreat(null);
+    setControl(null);
+    setAggression(null);
+    setFear(null);
+    setPrevented(null);
+    setUrgency(null);
+
+    setTimeout(() => {
+      const formElement = document.getElementById('formulario');
+      if (formElement) {
+        const topOffset = formElement.getBoundingClientRect().top + window.scrollY;
+        
+        const startY = window.scrollY;
+        const distance = topOffset - startY;
+        let startTime: number | null = null;
+        const duration = 1200; // 1.2 segundos exatos rolando a tela
+
+        const animation = (currentTime: number) => {
+          if (startTime === null) startTime = currentTime;
+          const timeElapsed = currentTime - startTime;
+          const progress = Math.min(timeElapsed / duration, 1);
+          
+          // Easing InOutQuad (acelera no começo e freia suave no final)
+          const ease = progress < 0.5 
+                        ? 2 * progress * progress 
+                        : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+          
+          window.scrollTo(0, startY + distance * ease);
+
+          if (timeElapsed < duration) {
+            requestAnimationFrame(animation);
+          }
+        };
+        
+        requestAnimationFrame(animation);
+      }
+    }, 100);
+  };
+
   return (
     <section className="section assessment-section" id="formulario">
       <div className="container">
@@ -134,6 +212,7 @@ export const AssessmentForm: React.FC = () => {
                 <input
                   type="checkbox"
                   checked={anonymous}
+                  disabled={isSubmitted}
                   onChange={(e) => {
                     setAnonymous(e.target.checked);
                     if (e.target.checked) {
@@ -149,7 +228,7 @@ export const AssessmentForm: React.FC = () => {
               </label>
             </div>
 
-            <div className={`identification-fields ${anonymous ? 'disabled-fields' : ''}`}>
+            <div className={`identification-fields ${(anonymous || isSubmitted) ? 'disabled-fields' : ''}`}>
               <div className="form-group">
                 <label className="form-label font-bold">Nome completo</label>
                 <input
@@ -157,7 +236,7 @@ export const AssessmentForm: React.FC = () => {
                   className="form-input"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  disabled={anonymous}
+                  disabled={anonymous || isSubmitted}
                   placeholder="Seu nome"
                 />
               </div>
@@ -170,7 +249,7 @@ export const AssessmentForm: React.FC = () => {
                     className="form-input"
                     value={age}
                     onChange={(e) => setAge(e.target.value)}
-                    disabled={anonymous}
+                    disabled={anonymous || isSubmitted}
                     placeholder="00"
                   />
                 </div>
@@ -182,7 +261,7 @@ export const AssessmentForm: React.FC = () => {
                     className="form-input"
                     value={cpf}
                     onChange={handleCpfChange}
-                    disabled={anonymous}
+                    disabled={anonymous || isSubmitted}
                     placeholder="000.000.000-00"
                   />
                 </div>
@@ -195,7 +274,7 @@ export const AssessmentForm: React.FC = () => {
                     className="form-input"
                     value={phone}
                     onChange={handlePhoneChange}
-                    disabled={anonymous}
+                    disabled={anonymous || isSubmitted}
                     placeholder="(00) 00000-0000"
                   />
                 </div>
@@ -208,7 +287,7 @@ export const AssessmentForm: React.FC = () => {
                     placeholder="Cidade/Estado"
                     value={location}
                     onChange={(e) => setLocation(e.target.value)}
-                    disabled={anonymous}
+                    disabled={anonymous || isSubmitted}
                   />
                 </div>
               </div>
@@ -224,64 +303,73 @@ export const AssessmentForm: React.FC = () => {
                 placeholder="Descreva o que está acontecendo com você"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
+                disabled={isSubmitted}
               ></textarea>
             </div>
 
             <div className="form-section-title box-shadow-hard">Perguntas objetivas</div>
 
-            <div className="form-radio-group">
+            <div className={`form-radio-group ${isSubmitted ? 'disabled-fields' : ''}`}>
               <p className="form-question">1. Você já sofreu algum tipo de ameaça?</p>
               <div className="radio-options">
-                <label><input type="radio" name="threat" value="Sim" onChange={() => setThreat('Sim')} required /> Sim</label>
-                <label><input type="radio" name="threat" value="Não" onChange={() => setThreat('Não')} /> Não</label>
+                <label><input type="radio" name="threat" value="Sim" checked={threat === 'Sim'} disabled={isSubmitted} onChange={() => setThreat('Sim')} required /> Sim</label>
+                <label><input type="radio" name="threat" value="Não" checked={threat === 'Não'} disabled={isSubmitted} onChange={() => setThreat('Não')} /> Não</label>
               </div>
             </div>
 
-            <div className="form-radio-group">
+            <div className={`form-radio-group ${isSubmitted ? 'disabled-fields' : ''}`}>
               <p className="form-question">2. Há controle sobre sua rotina, amizades ou redes sociais?</p>
               <div className="radio-options">
-                <label><input type="radio" name="control" value="Sim" onChange={() => setControl('Sim')} required /> Sim</label>
-                <label><input type="radio" name="control" value="Não" onChange={() => setControl('Não')} /> Não</label>
+                <label><input type="radio" name="control" value="Sim" checked={control === 'Sim'} disabled={isSubmitted} onChange={() => setControl('Sim')} required /> Sim</label>
+                <label><input type="radio" name="control" value="Não" checked={control === 'Não'} disabled={isSubmitted} onChange={() => setControl('Não')} /> Não</label>
               </div>
             </div>
 
-            <div className="form-radio-group">
+            <div className={`form-radio-group ${isSubmitted ? 'disabled-fields' : ''}`}>
               <p className="form-question">3. Já houve agressão física?</p>
               <div className="radio-options">
-                <label><input type="radio" name="aggression" value="Sim" onChange={() => setAggression('Sim')} required /> Sim</label>
-                <label><input type="radio" name="aggression" value="Não" onChange={() => setAggression('Não')} /> Não</label>
+                <label><input type="radio" name="aggression" value="Sim" checked={aggression === 'Sim'} disabled={isSubmitted} onChange={() => setAggression('Sim')} required /> Sim</label>
+                <label><input type="radio" name="aggression" value="Não" checked={aggression === 'Não'} disabled={isSubmitted} onChange={() => setAggression('Não')} /> Não</label>
               </div>
             </div>
 
-            <div className="form-radio-group">
+            <div className={`form-radio-group ${isSubmitted ? 'disabled-fields' : ''}`}>
               <p className="form-question">4. Você sente medo dessa pessoa?</p>
               <div className="radio-options">
-                <label><input type="radio" name="fear" value="Sim" onChange={() => setFear('Sim')} required /> Sim</label>
-                <label><input type="radio" name="fear" value="Não" onChange={() => setFear('Não')} /> Não</label>
+                <label><input type="radio" name="fear" value="Sim" checked={fear === 'Sim'} disabled={isSubmitted} onChange={() => setFear('Sim')} required /> Sim</label>
+                <label><input type="radio" name="fear" value="Não" checked={fear === 'Não'} disabled={isSubmitted} onChange={() => setFear('Não')} /> Não</label>
               </div>
             </div>
 
-            <div className="form-radio-group">
+            <div className={`form-radio-group ${isSubmitted ? 'disabled-fields' : ''}`}>
               <p className="form-question">5. Já tentou se afastar e foi impedida?</p>
               <div className="radio-options">
-                <label><input type="radio" name="prevented" value="Sim" onChange={() => setPrevented('Sim')} required /> Sim</label>
-                <label><input type="radio" name="prevented" value="Não" onChange={() => setPrevented('Não')} /> Não</label>
+                <label><input type="radio" name="prevented" value="Sim" checked={prevented === 'Sim'} disabled={isSubmitted} onChange={() => setPrevented('Sim')} required /> Sim</label>
+                <label><input type="radio" name="prevented" value="Não" checked={prevented === 'Não'} disabled={isSubmitted} onChange={() => setPrevented('Não')} /> Não</label>
               </div>
             </div>
 
             <div className="form-section-title box-shadow-hard yellow">Urgência</div>
 
-            <div className="form-radio-group danger-group">
+            <div className={`form-radio-group danger-group ${isSubmitted ? 'disabled-fields' : ''}`}>
               <p className="form-question">Você está em perigo imediato?</p>
               <div className="radio-options">
-                <label><input type="radio" name="urgency" value="Sim" onChange={() => setUrgency('Sim')} required /> Sim</label>
-                <label><input type="radio" name="urgency" value="Não" onChange={() => setUrgency('Não')} /> Não</label>
+                <label><input type="radio" name="urgency" value="Sim" checked={urgency === 'Sim'} disabled={isSubmitted} onChange={() => setUrgency('Sim')} required /> Sim</label>
+                <label><input type="radio" name="urgency" value="Não" checked={urgency === 'Não'} disabled={isSubmitted} onChange={() => setUrgency('Não')} /> Não</label>
               </div>
             </div>
 
-            <button type="submit" className="submit-btn box-shadow-hard-hover">
-              Analisar minha situação
-            </button>
+            <div className="submit-section">
+              <button type="submit" disabled={isSubmitted} className="submit-btn box-shadow-hard-hover">
+                Analisar minha situação
+              </button>
+              
+              {isSubmitted && (
+                <button type="button" onClick={handleClearForm} className="clear-btn">
+                  Responder novamente
+                </button>
+              )}
+            </div>
           </form>
         </div>
       </div>

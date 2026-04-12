@@ -1,73 +1,41 @@
-# React + TypeScript + Vite
+# Integração EmailJS - Formulário Jusclick
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Para garantir que os formulários de análise de risco enviem notificações corretamente, finalizamos a integração utilizando a REST API do EmailJS.
 
-Currently, two official plugins are available:
+## 1. Funcionamento do envio
+No momento em que a usuária acessa o formulário de risco (AssessmentForm) e clica em **"Analisar minha situação"**, duas coisas acontecem simultaneamente:
+1. O texto da recomendação é gerado instantaneamente na tela da usuária (como um pop-up de alerta).
+2. De forma invisível e paralela (fire-and-forget), o formulário empacota os dados da usuária e dispara uma requisição POST direta para os servidores do `EmailJS`, direcionando as informações em formato de e-mail para administradores/terapeutas.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+**Regra do modo Anônimo:** Se o usuário marcar a opção "Não quero me identificar", ao invés dos envios habituais de dados sensíveis (Nome, CPF, etc), o sistema empacota exatamente o rótulo **"Usuário Anônimo"** no campo de identificação dentro do email.
 
-## React Compiler
+## 2. Variáveis de Ambiente
+As referências de projeto do EmailJS não devem ficar estáticas no código por segurança, portanto, foram isoladas num arquivo `.env` na raiz do site:
+```env
+VITE_EMAILJS_SERVICE_ID=service_5wuf9no
+VITE_EMAILJS_TEMPLATE_ID=template_kpy7qz8
+VITE_EMAILJS_PUBLIC_KEY=COLOQUE_SUA_PUBLIC_KEY_AQUI
+```
+**Importante:** Você precisa entrar na sua conta do EmailJS (Dashboard > Account > API keys) para copiar a sua `Public Key` real e substituir no arquivo `.env` para os envios funcionarem.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 3. Modelo do Template no EmailJS
+Na plataforma do EmailJS, onde você gerencia o modelo `template_kpy7qz8`, modifique o conteúdo (Design / Content) do seu email para seguir esta estrutura abaixo, inserindo as variáveis dinâmicas com as chaves duplas `{{}}`:
 
-## Expanding the ESLint configuration
+**Assunto (Subject):** Novo Alerta de Violência - Jusclick
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+**Corpo do Email (Body):**
+```text
+Um novo formulário de avaliação de risco foi preenchido através do botão Analisar Minha Situação.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+=== DADOS DE IDENTIFICAÇÃO ===
+{{identificacao}}
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+=== DESCRIÇÃO DA SITUAÇÃO ===
+{{situacao}}
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+=== RECOMENDAÇÃO GERADA PARA A USUÁRIA ===
+{{recomendacao}}
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+**Módulo Pronto!**
+Você não precisa se preocupar com pacotes lentos e bloqueios do sistema como `@emailjs/browser` — a nossa implementação utiliza envios via API nativa segura (Fetch). O disparo já está totalmente acoplado ao código, basta acertar qual a `Public Key` no `.env` e as variaveis no seu Template do EmailJS.
