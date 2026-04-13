@@ -11,7 +11,8 @@
 }
 
 .resources-subtitle {
-  font-size: 1.1rem;
+  font-family: var(--font-hand);
+  font-size: 2rem;
   color: var(--c-dark);
   margin-top: 1rem;
   line-height: 1.6;
@@ -30,13 +31,21 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
   background-color: var(--c-white);
 }
 
 /* Base Desktop Rotations */
-.res-card-0, .res-card-2 { transform: rotate(-1.5deg); }
-.res-card-1, .res-card-3 { transform: rotate(1deg); }
+.res-card-0,
+.res-card-2 {
+  transform: rotate(-1.5deg);
+}
+.res-card-1,
+.res-card-3 {
+  transform: rotate(1deg);
+}
 
 .res-card:hover {
   transform: translate(-3px, -3px) rotate(0deg) !important;
@@ -44,10 +53,22 @@
   z-index: 10;
 }
 
-.res-pink { background-color: var(--c-pink); color: var(--c-white); }
-.res-blue { background-color: var(--c-blue); color: var(--c-white); }
-.res-dark { background-color: var(--c-dark); color: var(--c-light); }
-.res-yellow { background-color: var(--c-yellow); color: var(--c-dark); }
+.res-pink {
+  background-color: var(--c-pink);
+  color: var(--c-white);
+}
+.res-blue {
+  background-color: var(--c-blue);
+  color: var(--c-white);
+}
+.res-dark {
+  background-color: var(--c-dark);
+  color: var(--c-light);
+}
+.res-yellow {
+  background-color: var(--c-yellow);
+  color: var(--c-dark);
+}
 
 .res-card-head {
   display: flex;
@@ -70,10 +91,14 @@
   line-height: 1;
 }
 
-.res-yellow .res-number { color: var(--c-blue); }
+.res-yellow .res-number {
+  color: var(--c-blue);
+}
 .res-pink .res-number,
 .res-blue .res-number,
-.res-dark .res-number { color: var(--c-yellow); }
+.res-dark .res-number {
+  color: var(--c-yellow);
+}
 
 .res-title {
   font-family: var(--font-display);
@@ -140,7 +165,7 @@
 }
 
 .res-link-item:hover {
-  background-color: #FAFAFA;
+  background-color: #fafafa;
 }
 
 .res-link-icon {
@@ -199,8 +224,11 @@
   }
 
   /* Override desktop rotations on small screens */
-  .res-card-0, .res-card-1, .res-card-2, .res-card-3 { 
-    transform: rotate(0) !important; 
+  .res-card-0,
+  .res-card-1,
+  .res-card-2,
+  .res-card-3 {
+    transform: rotate(0) !important;
   }
 
   .res-card:hover {
@@ -210,7 +238,7 @@
   .resources-links-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .resources-links-block {
     padding: 1.5rem;
   }
