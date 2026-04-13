@@ -1,0 +1,72 @@
+.help-locations-section {
+  background-color: var(--c-light);
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.help-locations-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(0, 0, 0, 0.02) 0px,
+    rgba(0, 0, 0, 0.02) 2px,
+    transparent 2px,
+    transparent 12px
+  );
+  pointer-events: none;
+}
+
+.help-locations-section .container {
+  position: relative;
+  z-index: 1;
+}
+
+.help-locations-title {
+  margin-bottom: 2.5rem;
+}
+
+.help-locations-subtitle {
+  margin-bottom: 1.5rem;
+  max-width: 760px;
+  line-height: 1.6;
+}
+
+.help-locations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.2rem;
+}
+
+.help-locations-card {
+  padding: 2rem 1.25rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.help-locations-card-title {
+  margin-bottom: 0.7rem;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+}
+
+.help-locations-card-description {
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.help-locations-map-btn {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--c-dark);
+  background-color: var(--c-light);
+  padding: 0.5rem 0.85rem;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  margin-top: auto;
+  align-self: center;
+}
