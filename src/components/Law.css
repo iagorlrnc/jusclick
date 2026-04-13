@@ -54,7 +54,7 @@
 
 .connector-1 {
   position: absolute;
-  top: 29%;
+  top: 25%;
   left: 46%;
   z-index: 10;
   transform: scaleX(-1) rotate(5deg);
@@ -62,8 +62,8 @@
 
 .connector-2 {
   position: absolute;
-  top: 62%;
-  right: 40%;
+  top: 60%;
+  right: 22%;
   z-index: 10;
   transform: rotate(-12deg);
 }
@@ -83,7 +83,8 @@
 
 .note-arrow {
   display: inline-block;
-  margin-top: -1rem;
+  margin-top: 0.25rem;
+  margin-left: 1rem;
 }
 
 @media (max-width: 768px) {
@@ -91,11 +92,12 @@
     width: 100%;
     align-self: center;
   }
-  
-  .connector-1, .connector-2 {
+
+  .connector-1,
+  .connector-2 {
     display: none; /* Hide complex connectors on mobile */
   }
-  
+
   .hand-drawn-notes {
     position: relative;
     bottom: auto;
