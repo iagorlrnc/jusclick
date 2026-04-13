@@ -10,6 +10,7 @@
   --font-display: 'Archivo Black', sans-serif;
   --font-hand: 'Caveat', cursive;
   --font-body: 'Inter', sans-serif;
+  background-color: #505050;
 }
 
 * {
